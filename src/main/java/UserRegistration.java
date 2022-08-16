@@ -8,4 +8,9 @@ public class UserRegistration {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         return Pattern.matches(NAME_PATTERN, fName);
     }
+
+    public boolean validateLastName(String lName) {
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        return Pattern.matches(NAME_PATTERN, lName);
+    }
 }
