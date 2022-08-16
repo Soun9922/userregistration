@@ -1,22 +1,47 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class UserRegistrationTest {
 
     @Test
-    void givenFirstNameWhenProperShouldReturnTrue(){
+    void givenFirstNameWhenProperShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        userRegistration.validateFirstName("Sounak");
+        boolean firstName = userRegistration.validateFirstName("Sounak");
+        Assertions.assertTrue(firstName);
     }
 
     @Test
-    void givenLastNameWhenProperShouldReturnTrue(){
+    void givenLastNameWhenProperShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        userRegistration.validateLastName("Sarkar");
+        boolean lastName = userRegistration.validateLastName("Sarkar");
+        Assertions.assertTrue(lastName);
     }
 
     @Test
-    void givenEmailWhenProperShouldReturnTrue(){
+    void givenEmailWhenProperShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        userRegistration.validateEmail("sounak99@gmail.com");
+        boolean email = userRegistration.validateEmail("sounak99@gmail.com");
+        Assertions.assertTrue(email);
+    }
+
+    @Test
+    void givenPhoneNumberWhenProperWithSpaceShouldReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean phNumber = userRegistration.validatePhoneNumber("91 9978654231");
+        Assertions.assertTrue(phNumber);
+    }
+
+    @Test
+    void givenPhoneNumberWhenProperWithoutSpaceShouldReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean phNumber = userRegistration.validatePhoneNumber("919978654231");
+        Assertions.assertTrue(phNumber);
+    }
+
+    @Test
+    void givenPhoneNumberWhenNotProperShouldReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean phNumber = userRegistration.validatePhoneNumber("91997");
+        Assertions.assertFalse(phNumber);
     }
 }
