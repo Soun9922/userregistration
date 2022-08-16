@@ -46,16 +46,23 @@ public class UserRegistrationTest {
     }
 
     @Test
-    void givenPasswordWhenMinEightCharShouldReturnTrue(){
+    void givenPasswordWhenMinEightCharShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
         boolean password = userRegistration.validatePassword("$arkar@99");
         Assertions.assertTrue(password);
     }
 
     @Test
-    void givenPasswordWhenAtleastOneCapsShouldReturnTrue(){
+    void givenPasswordWhenAtleastOneCapsShouldReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
         boolean password = userRegistration.validatePassword("Sarkar@99");
+        Assertions.assertTrue(password);
+    }
+
+    @Test
+    void givenPasswordWhenAtleastOneNumericsShouldReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean password = userRegistration.validatePassword("Sarkar@9");
         Assertions.assertTrue(password);
     }
 }
